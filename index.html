@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        font-size: 100%;
+        font-family: "Open Sans", sans-serif;
+        background-image: url("https://images.unsplash.com/photo-1533436041693-411c656d1383?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=375&q=80");
+      }
+
+      body {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(1.5em);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      img {
+        display: block;
+        max-width: 100%;
+      }
+      .link {
+        color: hsl(220, 80%, 60%);
+        text-decoration: none;
+        font-family: inherit;
+        font-size: inherit;
+        background: transparent;
+        border: none;
+        display: inline-block;
+        cursor: pointer;
+      }
+      .container {
+        width: 100%;
+        max-width: 40rem;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .card {
+        background: #fff;
+        box-shadow: 0 1em 2em rgba(0, 0, 0, 0.4);
+      }
+      .stack * + * {
+        margin-top: 1em;
+      }
+
+      .button {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        text-transform: uppercase;
+        padding: 0.8em 2em;
+        font-family: inherit;
+        font-size: 0.9em;
+        font-weight: 500;
+        background: hsl(220, 80%, 60%);
+        color: #fff;
+        border: 1px solid hsl(220, 80%, 60%);
+        cursor: pointer;
+      }
+      .horizontal-form {
+        display: grid;
+        grid-template-columns: 3fr 5fr;
+        align-items: center;
+        text-align: center;
+      }
+      .horizontal-form > .image {
+        object-fit: cover;
+        height: 100%;
+        max-height: 369px;
+      }
+      .horizontal-form > .content {
+        display: flex;
+        flex-direction: column;
+        flex: 5;
+        padding: 1.5em 2em;
+        animation: fadeIn 0.3s ease-in-out forwards;
+      }
+      .horizontal-form > .content[hidden] {
+        display: none;
+      }
+
+      .horizontal-form .title {
+        font-size: 1.75em;
+        font-weight: bold;
+      }
+      .field {
+        display: flex;
+        flex-direction: column;
+      }
+      .field > .label {
+        text-align: left;
+        font-size: 1em;
+      }
+      .field > .input {
+        border: 1px solid #bbb;
+
+        font-size: inherit;
+        font-family: inherit;
+        margin-top: 0.25em;
+        padding: 0.25em;
+      }
+      .field > .input:focus {
+        outline: none;
+        border-color: hsl(220, 80%, 60%);
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <div class="card horizontal-form">
+        <img
+          src="https://images.unsplash.com/photo-1533436041693-411c656d1383?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=375&q=80"
+          alt="Fundo com laptop (a esquerda), monitor (a direita) e flores (ao centro)"
+          class="image"
+        />
+
+        <form id="login" class="content stack">
+          <h2 class="title">Acessar minha conta</h2>
+
+          <div class="field">
+            <label for="email" class="label">E-mail</label>
+            <input type="email" name="email" id="email" class="input" />
+          </div>
+
+          <div class="field">
+            <label for="password" class="label">Senha</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              class="input"
+            />
+          </div>
+
+          <button class="button">Acessar conta</button>
+          <button aria-controls="remember-password" class="link">
+            Esqueci minha senha
+          </button>
+          <p>
+            Não tem uma conta?
+            <button aria-controls="signup" class="link">Cadastre-se</button>
+          </p>
+        </form>
+
+        <form id="signup" class="content stack" hidden>
+          <h2 class="title">Criar minha conta</h2>
+
+          <div class="field">
+            <label for="signup-email" class="label">E-mail</label>
+            <input type="email" name="email" id="signup-email" class="input" />
+          </div>
+
+          <div class="field">
+            <label for="signup-password" class="label">Senha</label>
+            <input
+              type="password"
+              name="password"
+              id="signup-password"
+              class="input"
+            />
+          </div>
+
+          <button aria-controls="signup" class="button">Criar conta</button>
+          <p>
+            Já tem uma conta?
+            <button aria-controls="login" class="link">faça login</button>
+          </p>
+        </form>
+
+        <form id="remember-password" class="content stack" hidden>
+          <h2 class="title">Esqueci minha senha</h2>
+
+          <div class="field">
+            <label for="remember-password-email" class="label"
+              >E-mail de recuperação</label
+            >
+            <input
+              type="email"
+              name="email"
+              id="remember-password-email"
+              class="input"
+            />
+          </div>
+
+          <button class="button">Enviar e-mail</button>
+          <p>
+            Lembrou sua senha?
+            <button aria-controls="login" class="link">faça login</button>
+          </p>
+        </form>
+      </div>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
